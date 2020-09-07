@@ -1,0 +1,36 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "node server",
+  "main": "index.js",
+  "author": "zxy",
+  "license": "MIT",
+  "scripts": {
+    "dev": "NODE_ENV=development npx ts-node-dev app.ts",
+    "start": "pm2 start pm2.json"
+  },
+  "dependencies": {
+    "@types/co": "^4.6.2",
+    "@types/koa": "^2.11.4",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-router": "^7.4.1",
+    "@types/koa-static": "^4.0.1",
+    "@types/log4js": "^2.3.5",
+    "@types/node": "^14.6.4",
+    "awilix": "^4.2.6",
+    "awilix-koa": "^4.0.0",
+    "co": "^4.6.0",
+    "global": "^4.4.0",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^9.4.0",
+    "koa-static": "^5.0.0",
+    "koa-swig": "^2.2.1",
+    "koa2-connect-history-api-fallback": "^0.1.2",
+    "log4js": "^6.3.0",
+    "typescript": "^4.0.2"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.62"
+  }
+}
