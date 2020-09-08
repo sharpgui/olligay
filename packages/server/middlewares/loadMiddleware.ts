@@ -35,7 +35,8 @@ const initLog = (app: Koa) => {
     categories: { default: { appenders: ["cheese"], level: "error" } },
   });
   const logger = getLogger("cheese");
-  ErrorHandler.error(app, logger);
+  app.context.logger = logger
+  ErrorHandler.error(app);
 };
 
 // 配置路由
