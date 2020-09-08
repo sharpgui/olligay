@@ -7,7 +7,7 @@ addAliases({
   "@middlewares": `${__dirname}/middlewares`,
   "@services": `${__dirname}/services`,
 });
-import load from '@middlewares/loadMiddleware'
+import load from '@middlewares/loadMiddleware';
 import config from "@config/index";
 
 const app = new Koa();
