@@ -8,10 +8,10 @@
     "typeRoots": ["typings", "./node_modules/@types"],
     "baseUrl": "./",
     "paths": {
-      "@interfaces/*": ["shared/*"],
+      "@interfaces/*": ["interfaces/*"],
       "@config/*": ["config/*"],
       "@middlewares/*": ["middlewares/*"]
-    }
+    },
   },
   "include": ["**/*.ts"]
 }

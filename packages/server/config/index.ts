@@ -5,7 +5,7 @@ interface configIn {
     staticDir: string;
     env: string | undefined;
     port?: number;
-    memoryFlag?: string | boolean;
+    memoryFlag: string | boolean;
 }
 
 let config: configIn = {
