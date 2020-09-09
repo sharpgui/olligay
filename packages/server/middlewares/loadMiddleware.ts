@@ -1,6 +1,7 @@
 import * as Koa from "koa";
 import * as bodyParser from "koa-bodyparser";
 import * as serve from "koa-static";
+import co from "co";
 import { resolve } from "path";
 import { createContainer, Lifetime } from "awilix";
 import { scopePerRequest, loadControllers } from "awilix-koa";
@@ -8,8 +9,9 @@ import { configure, getLogger } from "log4js";
 import { historyApiFallback } from "koa2-connect-history-api-fallback";
 import config from "@config/index";
 import ErrorHandler from "@middlewares/ErrorHandler";
+const render = require("koa-swig");
 
-const { staticDir } = config;
+const { staticDir, memoryFlag, viewDir } = config;
 
 // IOC容器注入
 const initIOC = (app: Koa) => {
@@ -47,8 +49,20 @@ const initController = (app: Koa) => {
 
 // 渲染逻辑，后期react同构SSR
 const initRender = (app: Koa) => {
+  // 配置swig(前端模板)
+  app.context.render = co.wrap(
+    render({
+      root: viewDir,
+      autoescape: true,
+      cache: memoryFlag,
+      ext: "html",
+      varControls: ["[[", "]]"], // 默认动态数据是{{}}，但是为了与vue区分开来，改为[[xxx]]
+      writeBody: false
+    })
+  );
+  // 配置静态文件目录
   app.use(serve(staticDir));
-}
+};
 
 export default (app: Koa<Koa.DefaultState, Koa.DefaultContext>) => {
   app.use(bodyParser());

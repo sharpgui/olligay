@@ -6,6 +6,13 @@
     <title>olligay🍺</title>
 </head>
 <body>
-    olligay🍺
+    <div id="app"></div>
+    <script>
+        fetch('/api/demo')
+        .then(response => response.json())
+        .then((res) => {
+            console.log('res', res)
+        })
+    </script>
 </body>
 </html>

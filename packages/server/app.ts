@@ -7,12 +7,12 @@ addAliases({
   "@middlewares": `${__dirname}/middlewares`,
   "@services": `${__dirname}/services`,
 });
-import load from '@middlewares/loadMiddleware';
 import config from "@config/index";
+import loadMiddleware from "@middlewares/loadMiddleware";
 
 const app = new Koa();
 
-load(app);
+loadMiddleware(app);
 
 app.listen(config.port, () => {
   console.log(`ollligay🍺🍺🍺，server is running on port ${config.port}`);
